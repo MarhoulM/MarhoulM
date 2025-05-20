@@ -16,19 +16,8 @@ class Program
         do
         {
             Console.Clear();
-            Console.WriteLine("Vítejte v aplikaci To do list.");;
-            Console.WriteLine("Podle akce, kterou chcete provést zadejte číslo jedné z následujících kategorií.");
-            Console.WriteLine("1. Přidat novou poznámku.");
-            Console.WriteLine("2. Zobrazit poznámky.");
-            Console.WriteLine("3. Upravit stávající poznámku.");
-            Console.WriteLine("4. Smazat poznámku.");
-            Console.WriteLine("5. Vyhledávat v poznámkách.");
-            Console.WriteLine("6. Změnit důležitost poznámky.");
-            Console.WriteLine("7. Seřadit poznámky.");
-            Console.WriteLine("8. Exportuj poznámky do textového souboru.");
-            Console.WriteLine("9. Pro ukončení zadejte exit a potvrďte klávesou Enter.");
+            Menu();
             readResult = Console.ReadLine();
-
             if (readResult != null)
             {
                 switch (readResult)
@@ -60,10 +49,7 @@ class Program
                             }
                             else
                             {
-                                for (int i = 0; i < notes.Count; i++)
-                                {
-                                    Console.WriteLine($"{i + 1}. {notes[i].Text} (Důležitost: {notes[i].Importance})");
-                                }
+                                NoteList(notes);
                             }
                             Console.WriteLine(messageConfirmation);
                             Console.ReadLine();
@@ -71,6 +57,7 @@ class Program
                         }
                     case "3":
                         {
+                            NoteList(notes);
                             Console.WriteLine("Zadejte číslo poznámky, kterou chcete upravit.");
                             string? readInput = Console.ReadLine();
                             if (int.TryParse(readInput, out int i) && i > 0 && i <= notes.Count)
@@ -79,7 +66,7 @@ class Program
                                 Console.WriteLine("Zadejte poznámku, která nahradí původní.");
                                 string? adjustmentString = Console.ReadLine();
                                 notes[i - 1].Text = adjustmentString;
-                                Console.WriteLine("Poznámka byla uložena.\nStiskněte Enter pro pokračování.");
+                                Console.WriteLine("Poznámka byla uložena.");
                             }
                             else
                             {
@@ -91,6 +78,7 @@ class Program
                         }
                     case "4":
                         {
+                            NoteList(notes);
                             Console.WriteLine("Zadejte číslo poznámky, kterou chcete smazat.");
                             string? readInput2 = Console.ReadLine();
                             if (int.TryParse(readInput2, out int j) && j > 0 && j <= notes.Count)
@@ -137,6 +125,7 @@ class Program
                     case "6":
                         {
                             Console.WriteLine("6. Změnit důležitost poznámky.");
+                            NoteList(notes);
                             Console.WriteLine("Zadejte číslo poznámky, které chcete změnit důležitost.");
                             string? readInput4 = Console.ReadLine();
                             if (int.TryParse(readInput4, out int index) && index > 0 && index <= notes.Count)
@@ -173,11 +162,13 @@ class Program
                                 {
                                     notes = notes.OrderBy(n => n.Text).ToList();
                                     Console.WriteLine("Poznámky byly seřazeny.");
+                                    NoteList(notes);
                                 }
                                 else if (readInput5 == "2")
                                 {
                                     notes = notes.OrderByDescending(n => n.Importance).ToList();
                                     Console.WriteLine("Poznámky byly seřazeny.");
+                                    NoteList(notes);
                                 }
                                 else
                                     Console.WriteLine("Neplatný vstup.");
@@ -214,6 +205,29 @@ class Program
 
         Console.WriteLine("Program byl ukončen. Stiskněte Enter pro zavření.");
         Console.ReadLine();
+    }
+
+    static void Menu()
+    {
+        Console.WriteLine("Vítejte v aplikaci To do list."); ;
+        Console.WriteLine("Podle akce, kterou chcete provést zadejte číslo jedné z následujících kategorií.");
+        Console.WriteLine("1. Přidat novou poznámku.");
+        Console.WriteLine("2. Zobrazit poznámky.");
+        Console.WriteLine("3. Upravit stávající poznámku.");
+        Console.WriteLine("4. Smazat poznámku.");
+        Console.WriteLine("5. Vyhledávat v poznámkách.");
+        Console.WriteLine("6. Změnit důležitost poznámky.");
+        Console.WriteLine("7. Seřadit poznámky.");
+        Console.WriteLine("8. Exportuj poznámky do textového souboru.");
+        Console.WriteLine("9. Pro ukončení zadejte exit a potvrďte klávesou Enter.");
+    }
+    static void NoteList(List<Note> notes)
+    {
+        Console.WriteLine("Seznam poznámek:");
+        for (int i = 0; i < notes.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {notes[i].Text} (Důležitost: {notes[i].Importance})");
+        }
     }
 }
 
