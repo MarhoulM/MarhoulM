@@ -1,15 +1,10 @@
-.submit-btn {
-    color: white;
+.products{
+    color:  #A80B0B;
     font-weight: bold;
-    border-color: white;
-    background-color: #A80B0B;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    border-color: #A80B0B;
 }
-
-
-.checkout-container{
-    text-align: center;
+.thank-you-container{
+        text-align: center;
     max-width: 900px;
     margin: 2.5px 20px; 
     display: flex;

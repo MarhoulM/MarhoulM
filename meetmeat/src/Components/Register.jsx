@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    const result = await refister(username, email, password);
+    const result = await register(username, email, password);
     if (!result.success) {
       setError(result.message);
     }

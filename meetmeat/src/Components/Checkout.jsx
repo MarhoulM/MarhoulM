@@ -42,7 +42,7 @@ const Checkout = () => {
         orderNotes,
       });
       clearCart();
-      navigate("/tahnk-you");
+      navigate("/thank-you");
     } else {
       setFormErrors(errors);
     }
