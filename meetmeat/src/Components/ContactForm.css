@@ -36,7 +36,8 @@
   min-height: 120px;
 }
 .submit{
-      color:  #A80B0B;
+    color: white;
     font-weight: bold;
-    border-color: #A80B0B;
+    border-color: white;
+    background-color: #A80B0B;
 }

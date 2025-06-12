@@ -52,12 +52,12 @@ const ContactForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">E-mail:</label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder="Zadejte svůj email."
+            placeholder="Zadejte svůj e-mail."
             value={formData.email}
             onChange={handleChange}
             required

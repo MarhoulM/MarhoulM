@@ -6,6 +6,8 @@ import Footer from "./Components/Footer";
 import Basket from "./Components/Basket";
 import Profile from "./Components/Profile";
 import Contact from "./Components/Contact";
+import Checkout from "./Components/Checkout";
+import ThankYou from "./Components/ThankYou";
 import ProductDetail from "./Components/ProductDetail";
 import {
   BrowserRouter as Router,
@@ -13,6 +15,7 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
+import { AuthProvider } from "./Components/AuthContext";
 
 const items = [
   {
@@ -243,40 +246,44 @@ function App() {
 
   return (
     <>
-      <Router>
-        <div>
-          <Navbar
-            onSearch={setSearchTerm}
-            searchTerm={searchTerm}
-            onSearchSubmit={handleSearchBtn}
-            onClearSearch={handleClearSearch}
-          />
-          <div className="product-card-wrapper">
-            <Routes>
-              <Route
-                path="/"
-                element={<ProductCard products={filteredItems} />}
-              />
-              <Route
-                path="/products"
-                element={<ProductCard products={filteredItems} />}
-              />
-              <Route
-                path="/products/:productId"
-                element={<ProductDetail allProducts={items} />}
-              />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/basket" element={<Basket />} />
-              <Route
-                path="*"
-                element={<ProductCard products={filteredItems} />}
-              />
-            </Routes>
+      <AuthProvider>
+        <Router>
+          <div>
+            <Navbar
+              onSearch={setSearchTerm}
+              searchTerm={searchTerm}
+              onSearchSubmit={handleSearchBtn}
+              onClearSearch={handleClearSearch}
+            />
+            <div className="product-card-wrapper">
+              <Routes>
+                <Route
+                  path="/"
+                  element={<ProductCard products={filteredItems} />}
+                />
+                <Route
+                  path="/products"
+                  element={<ProductCard products={filteredItems} />}
+                />
+                <Route
+                  path="/products/:productId"
+                  element={<ProductDetail allProducts={items} />}
+                />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/basket" element={<Basket />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/thank-you" element={<ThankYou />} />
+                <Route
+                  path="*"
+                  element={<ProductCard products={filteredItems} />}
+                />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </Router>
+        </Router>
+      </AuthProvider>
     </>
   );
 }

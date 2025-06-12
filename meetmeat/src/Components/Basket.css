@@ -10,7 +10,7 @@
     padding: 50px;
     display: flex;
     flex-direction: column;
-    min-height: 580px;
+    min-height: 590px;
     justify-content: center; 
     align-items: center;   
     background-color: #fff; 
@@ -37,7 +37,7 @@
     justify-content: flex-start;
     gap: 0.25rem;
     align-items: stretch; 
-    min-height: 580px;
+    min-height: 590px;
    
     padding: 15px; 
     background-color: #fff; 

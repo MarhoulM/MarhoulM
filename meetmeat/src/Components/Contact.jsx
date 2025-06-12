@@ -58,8 +58,8 @@ const Contact = () => {
         <p>U šťavnatého steaku 12, Praha 7, 170 00</p>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7238.127419845063!2d14.419393273913995!3d50.10379984875101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94d2a798047b%3A0x1c00af1298630c30!2s170%2000%20Praha%207!5e0!3m2!1scs!2scz!4v1749543605870!5m2!1scs!2scz"
-          width="600"
-          height="450"
+          width="486"
+          height="364.5"
           style={{ border: 0 }}
           allowFulScreen={true}
           loading="lazy"

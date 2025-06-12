@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart } from "./CartContext";
 import "./Basket.css";
+import { useNavigate } from "react-router-dom";
 
 const Basket = () => {
   const { cartItems, removeFromCart, getTotalItems, updateQuantity } =
@@ -11,6 +12,12 @@ const Basket = () => {
     0
   );
 
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    navigate("/checkout");
+  };
+
   return (
     <div className="basket-container">
       {" "}
@@ -18,6 +25,9 @@ const Basket = () => {
         <div className="empty-basket">
           <h2>Váš košík je prázdný!</h2>
           <p>Prohlédněte si naši nabídku a přidejte si něco dobrého.</p>
+          <button className="btn" onClick={() => navigate("/products")}>
+            Zpět na produkty
+          </button>
         </div>
       ) : (
         <>
@@ -67,7 +77,7 @@ const Basket = () => {
           <div className="basket-summary">
             <h3>Celkem položek: {getTotalItems()}</h3>
             <h3>Celková cena: {totalPrice} Kč</h3>
-            <button className="confirm-order-btn">
+            <button className="confirm-order-btn" onClick={handleCheckout}>
               Přejít k dopravě a platbě
             </button>
           </div>
